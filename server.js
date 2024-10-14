@@ -11,7 +11,7 @@ app.get("/", function(req, res) {
 })
 
 app.get("/about", (req,res) => {
-  res.send("<p>sex is cooler</p>")
+  res.send("<p>this is the about page!</p>")
 })
 
 app.listen(port, () => {
