@@ -26,19 +26,22 @@ console.log(request_str);
 async function getData(url) {
   try {
     const response = await fetch(url);
-    const data = await response.json();
-    console.log(data);
-    return data;
+    return response.json();
   } catch (error) {
     console.error("Error:", error);
   }
 }
 
-function json_to_dict(json) {}
+getData(request_str)
+  .then((response) => {
+    fill_page(response)
+  })
+  .catch((error) => {
+    console.error("Error fetching data: ", error);
+  });
 
-data = getData(request_str).then((datu) => {
-  console.log(datu.daily);
-  return datu.daily.temperature_2m_max;
-});
-
-document.getElementById("output").textContent = data + "hhh"
+//document.getElementById("output").textContent = data + "hhh"
+function fill_page(data) {
+  console.log(data)
+  document.getElementById("output").textContent = data.daily.temperature_2m_max
+}
