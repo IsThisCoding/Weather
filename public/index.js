@@ -18,7 +18,13 @@ const setParams = (lat, long) => ({
   forecast_days: 1,
 });
 
-const params = new URLSearchParams(setParams(37.69, -122.3));
+async function get_location() {
+  lat = document.getElementById("latitude").value;
+  long = document.getElementById("longitude").value;
+  return [lat, long];
+}
+
+const params = new URLSearchParams();
 const query_string = params.toString();
 const request_str = url + query_string;
 console.log(request_str);
@@ -38,10 +44,11 @@ getData(request_str)
   })
   .catch((error) => {
     console.error("Error fetching data: ", error);
-  })
+  });
 
 //document.getElementById("output").textContent = data + "hhh"
 function fill_page(data) {
   console.log(data);
-  document.getElementById("output").textContent = data.daily.temperature_2m_max;
+  document.getElementById("max_temp").textContent =
+    data.daily.temperature_2m_max;
 }
