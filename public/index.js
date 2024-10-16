@@ -18,16 +18,13 @@ const setParams = (lat, long) => ({
   forecast_days: 1,
 });
 
-async function get_location() {
+function genUrl(url) {
   lat = document.getElementById("latitude").value;
   long = document.getElementById("longitude").value;
-  return [lat, long];
+  const params = new URLSearchParams(setParams(lat, long));
+  const request_str = url + params.toString();
+  return request_str;
 }
-
-const params = new URLSearchParams();
-const query_string = params.toString();
-const request_str = url + query_string;
-console.log(request_str);
 
 async function getData(url) {
   try {
@@ -38,17 +35,36 @@ async function getData(url) {
   }
 }
 
-getData(request_str)
-  .then((response) => {
-    fill_page(response);
-  })
-  .catch((error) => {
-    console.error("Error fetching data: ", error);
-  });
+function run() {
+  getData(genUrl(url))
+    .then((response) => {
+      fill_page(response);
+    })
+    .catch((error) => {
+      console.error("Error fetching data: ", error);
+    });
+}
 
-//document.getElementById("output").textContent = data + "hhh"
 function fill_page(data) {
   console.log(data);
-  document.getElementById("max_temp").textContent =
-    data.daily.temperature_2m_max;
+  document.getElementById("max_temp").innerHTML =
+    `High Temperature: ${data.daily.temperature_2m_max}`;
+  document.getElementById("min_temp").innerHTML =
+    `Low Temperature: ${data.daily.temperature_2m_min}`;
+  document.getElementById("real_feel_max").innerHTML =
+    `Real Feel High: ${data.daily.apparent_temperature_max}`;
+  document.getElementById("real_feel_min").innerHTML =
+    `Real Feel Low: ${data.daily.apparent_temperature_min}`;
+  document.getElementById("sunrise").innerHTML =
+    `Sunrise Time: ${data.daily.sunrise}`;
+  document.getElementById("sunset").innerHTML =
+    `Sunset Time: ${data.daily.sunset}`;
+  document.getElementById("uv_index").innerHTML =
+    `UV Index: ${data.daily.uv_index_max}`;
+  document.getElementById("precip").innerHTML =
+    `Precipitation Amount: ${data.daily.precipitation_sum}`;
+  document.getElementById("precip_chance").innerHTML =
+    `Precipitation Chance: ${data.daily.precipitation_probability_max}`;
+  document.getElementById("wind_speed").innerHTML =
+    `Wind Speed: ${data.daily.wind_speed_10m_max}`;
 }
