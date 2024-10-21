@@ -1,18 +1,13 @@
 * {
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
-  color: peru;
 }
 
-h2 {
-  color: red;
-  font-weight: 1000;
+h1 {
+  color: cornflowerblue;
 }
 
-div {
-  color: black;
+.pos_input {
+  background-color: lightblue;
+  outline: thick solid cornflowerblue;
+  border-radius: 10px
 }
-
-.cheese {
-  color: yellow;
-}
-

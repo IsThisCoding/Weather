@@ -11,8 +11,10 @@
 
 <body>
   <h1>Find Your Weather!</h1>
-  <input id="latitude" type="number" max="180" min="-180" />
-  <input id="longitude" type="number" max="180" min="-180" />
+  <label for="latitude">Latitude</label>
+  <input class="pos_input" id="latitude" type="number" max="90" min="-90" />
+  <label for="longitude">Longitude</label>
+  <input class="pos_input" id="longitude" type="number" max="180" min="-180" />
   <button onclick="run()">hello </button>
   <p class="data_output" id="max_temp">High Temperature:</p>
   <p class="data_output" id="min_temp">Low Temperature:</p>
@@ -25,11 +27,6 @@
   <p class="data_output" id="precip_chance">Precipitation Chance:</p>
   <p class="data_output" id="uv_index">UV Index:</p>
   <div>
-    Different divs
-    <div class="cheese">hello</div>
-    <h2>this text is bold</h2>
-    <div>yepp</div>
-  </div>
   <script src="/index.js"></script>
 </body>
 
