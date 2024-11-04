@@ -2,6 +2,10 @@
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
 
+body {
+  margin: 0px;
+}
+
 h1 {
   color: cornflowerblue;
 }
@@ -9,5 +13,28 @@ h1 {
 .pos_input {
   background-color: lightblue;
   outline: thick solid cornflowerblue;
-  border-radius: 10px
+  border-radius: 10px;
+  border: none;
+}
+
+.top-bar {
+  background-color: purple;
+  overflow: hidden;
+  width: 100%;
+}
+
+label,input {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+-webkit-appearance: none;
+}
+
+
+.weather-data {
+  margin: 50px;
+  padding: 40px;
+  background-color: #5F9EA0;
 }

@@ -1,5 +1,5 @@
 const url = new URL("https://api.open-meteo.com/v1/forecast?");
-const setParams = (lat, long) => ({
+const setParams = (lat, long, units = "fahrenheit") => ({
   latitude: lat,
   longitude: long,
   daily: [
@@ -14,7 +14,7 @@ const setParams = (lat, long) => ({
     "precipitation_probability_max",
     "wind_speed_10m_max",
   ],
-  temperature_unit: "fahrenheit",
+  temperature_unit: units,
   forecast_days: 1,
 });
 
